@@ -1,10 +1,15 @@
-import './App.css';
+import Pokedex from "./Components/Pokedex";
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className="App">
-    
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Pokedex />
+      </div>
+    </QueryClientProvider>
   );
 }
 
