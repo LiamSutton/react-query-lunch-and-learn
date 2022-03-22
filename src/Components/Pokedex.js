@@ -1,6 +1,8 @@
 import React from 'react'
-import { useQuery } from 'react-query'
+import '../Styles/Pokedex.css'
 import PokedexEntry from './PokedexEntry'
+import { useQuery } from 'react-query'
+
 
 const fetchPokemon = async () => {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151}}`)
@@ -17,9 +19,7 @@ const Pokedex = () => {
     )
 
     return (
-        <div>
-            <h2>React Query!</h2>
-            <h4>Gotta cache em all</h4>
+        <div className='pokedex'>
             {status === 'loading' && (
                 <div>
                     <p>Loading pokemon...</p>
@@ -33,7 +33,7 @@ const Pokedex = () => {
             )}
 
             {status === 'success' && (
-                <div>
+                <div className='container'>
                     {data.results.map((pokemon, index) => {
                         let dexNumber = String(index + 1).padStart(3, '0')
                         return <PokedexEntry

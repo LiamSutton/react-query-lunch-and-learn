@@ -1,11 +1,12 @@
 import React from 'react'
-
+import '../Styles/PokedexEntry.css'
 const PokedexEntry = ({name, pokedexNumber, image}) => {
 
     return(
-        <div>
-            <h5>#{String(pokedexNumber).padStart(3)}: {name}</h5>
+        <div className='entry'>
+            <h5>{name}</h5>
             <img src={image}/>
+            <p>#{pokedexNumber}</p>
         </div>
     )
 }
