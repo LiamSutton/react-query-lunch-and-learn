@@ -3,22 +3,20 @@ import { useQuery } from 'react-query'
 import PokedexEntry from './PokedexEntry'
 
 const fetchPokemon = async () => {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=151')
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151}}`)
     return res.json()
 }
 
 const Pokedex = () => {
-    const BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+    const BASE_URL = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
 
-    const {data, status} = useQuery('pokemon', fetchPokemon)
+    const { data, status } = useQuery('pokemon',fetchPokemon,
+        {
+            refetchOnWindowFocus: false
+        }
+    )
 
-    // const pokemon = data.results.map((data, index) => ({
-    //     name: data.name,
-    //     pokedexNumber: index + 1,
-    //     image: `${BASE_URL}/${index + 1}.png`
-    // }))
-
-    return(
+    return (
         <div>
             <h2>React Query!</h2>
             <h4>Gotta cache em all</h4>
@@ -37,11 +35,12 @@ const Pokedex = () => {
             {status === 'success' && (
                 <div>
                     {data.results.map((pokemon, index) => {
+                        let dexNumber = String(index + 1).padStart(3, '0')
                         return <PokedexEntry
                             key={pokemon.name}
                             name={pokemon.name}
-                            pokedexNumber={index + 1}
-                            image={`${BASE_URL}/${(index + 1)}.png`}
+                            pokedexNumber={dexNumber}
+                            image={`${BASE_URL}/${dexNumber}.png`}
                         />
                     })}
                 </div>

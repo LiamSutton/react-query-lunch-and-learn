@@ -4,7 +4,7 @@ const PokedexEntry = ({name, pokedexNumber, image}) => {
 
     return(
         <div>
-            <h5>{name}</h5>
+            <h5>#{String(pokedexNumber).padStart(3)}: {name}</h5>
             <img src={image}/>
         </div>
     )
