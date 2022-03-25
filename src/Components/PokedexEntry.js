@@ -4,9 +4,9 @@ const PokedexEntry = ({name, pokedexNumber, image}) => {
 
     return(
         <div className='entry'>
-            <h5>{name}</h5>
+            <h5 className='name'>{name}</h5>
             <img src={image}/>
-            <p>#{pokedexNumber}</p>
+            <p className='number'>#{pokedexNumber}</p>
         </div>
     )
 }

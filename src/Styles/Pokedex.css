@@ -1,15 +1,20 @@
 .pokedex {
     max-height: 75vh;
     scroll-behavior: smooth;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-items: center;
-    overflow: scroll;
     border: 1px solid black;
     margin-left: 10vw;
     margin-right: 10vw;
     border-radius: 10px;
     box-shadow: 5px 5px 15px 5px rgba(70,70,70,0.6);
     background: white;
+}
+
+.container {
+    max-height: 75vh;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    overflow: scroll;
 }

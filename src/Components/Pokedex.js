@@ -14,7 +14,7 @@ const Pokedex = () => {
 
     const { data, status } = useQuery('pokemon',fetchPokemon,
         {
-            refetchOnWindowFocus: false
+            refetchOnWindowFocus: false,
         }
     )
 
