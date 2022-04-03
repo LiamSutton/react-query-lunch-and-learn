@@ -1,20 +1,21 @@
-import React from 'react'
+import { React, useState } from 'react'
 import '../Styles/Pokedex.css'
 import PokedexEntry from './PokedexEntry'
 import { useQuery } from 'react-query'
 
-
-const fetchPokemon = async () => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151}}`)
+const fetchPokemon = async (limit) => {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}}}`)
     return res.json()
 }
 
 const Pokedex = () => {
     const BASE_URL = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/'
 
-    const { data, status } = useQuery('pokemon',fetchPokemon,
+    const [limit, setLimit] = useState(151)
+
+    const { data, status } = useQuery(['pokemon', limit], () => fetchPokemon(limit),
         {
-            refetchOnWindowFocus: false,
+            staleTime: 5000
         }
     )
 
